@@ -1,4 +1,4 @@
-import { DatabasePostgres } from "../db/database-postgres";
+import { DatabasePostgres } from '../db/database-postgres.js';
 
 const database = new DatabasePostgres();
 

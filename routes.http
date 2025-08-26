@@ -1,31 +1,33 @@
-POST https://first-node-project-bgs8.onrender.com/videos
+### 1️⃣ Criar vídeo
+POST http://localhost:3334/movies
 Content-Type: application/json
 
 {
-    "title" : "video node",
-    "description" : "esse é o primeiro video",
-    "duration" : 180
+    "title": "video node",
+    "description": "esse é o primeiro video",
+    "duration": 180
 }
 
 ###
 
-GET https://first-node-project-bgs8.onrender.com/videos
-
+### 2️⃣ Listar vídeos
+GET http://localhost:3334/movies
 
 ###
 
-PUT https://first-node-project-bgs8.onrender.com/videos/1c92a66d-6f65-42f0-bc7d-08d7ad0185b9
+### 3️⃣ Atualizar vídeo
+# Substitua SEU_VIDEO_ID pelo id retornado ao criar ou listar vídeos
+PUT http://localhost:3334/movies/SEU_VIDEO_ID
 Content-Type: application/json
 
 {
-    "title" : "video 69",
-    "description" : "esse é o primeiro video",
-    "duration" : 180
+    "title": "video 69",
+    "description": "atualizando o vídeo",
+    "duration": 180
 }
-
 
 ###
 
-DELETE https://first-node-project-bgs8.onrender.com/videos/f8c6712a-8d46-4299-a0ec-19602f5ef302
-
-
+### 4️⃣ Deletar vídeo
+# Substitua SEU_VIDEO_ID pelo id que deseja deletar
+DELETE http://localhost:3334/movies/SEU_VIDEO_ID
