@@ -3,8 +3,8 @@ POST http://localhost:3334/movies
 Content-Type: application/json
 
 {
-    "title": "video node",
-    "description": "esse é o primeiro video",
+    "title": "video node 2",
+    "description": "esse é o segundo video",
     "duration": 180
 }
 
@@ -17,7 +17,7 @@ GET http://localhost:3334/movies
 
 ### 3️⃣ Atualizar vídeo
 # Substitua SEU_VIDEO_ID pelo id retornado ao criar ou listar vídeos
-PUT http://localhost:3334/movies/SEU_VIDEO_ID
+PUT http://localhost:3334/movies/60104350-2758-43f3-9565-27b8e01d8df1
 Content-Type: application/json
 
 {
@@ -30,4 +30,4 @@ Content-Type: application/json
 
 ### 4️⃣ Deletar vídeo
 # Substitua SEU_VIDEO_ID pelo id que deseja deletar
-DELETE http://localhost:3334/movies/SEU_VIDEO_ID
+DELETE http://localhost:3334/movies/60104350-2758-43f3-9565-27b8e01d8df1

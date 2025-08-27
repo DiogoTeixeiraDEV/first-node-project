@@ -17,7 +17,7 @@ services:
     build: .
     container_name: filmes-api
     ports:
-      - "3334:3333"   # 3334 na máquina, 3333 no container
+      - "3334:3333"   # acessa pela porta 3334
     depends_on:
       - db
     environment:
@@ -27,7 +27,8 @@ services:
       DB_USER: postgres
       DB_PASS: postgres
     volumes:
-      - /app/node_modules  # apenas para manter node_modules dentro do container
+      - .:/app              # monta o código local
+      - /app/node_modules   # não deixa sobrescrever node_modules
 
 volumes:
   db_data:
