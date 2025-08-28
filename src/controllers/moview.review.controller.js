@@ -23,7 +23,7 @@ export async function getReviewByMovie(request, reply) {
 }
 
 export async function deleteReview(request, reply) {
-    const reviewId = parseInt(request.params.id);
+    const reviewId = parseInt(request.params.reviewId);
     const movieId = parseInt(request.params.movieId);
     
     await reviewService.deleteReview(reviewId, movieId);

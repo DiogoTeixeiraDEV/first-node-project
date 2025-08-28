@@ -17,7 +17,7 @@ GET http://localhost:3334/movies
 
 ### 3️⃣ Atualizar vídeo
 # Substitua SEU_VIDEO_ID pelo id retornado ao criar ou listar vídeos
-PUT http://localhost:3334/movies/SEU_ID
+PUT http://localhost:3334/movies/2
 Content-Type: application/json
 
 {
@@ -30,4 +30,4 @@ Content-Type: application/json
 
 ### 4️⃣ Deletar vídeo
 # Substitua SEU_VIDEO_ID pelo id que deseja deletar
-DELETE http://localhost:3334/movies/SEU_ID
+DELETE http://localhost:3334/movies/3

@@ -13,14 +13,17 @@ services:
       - db_data:/var/lib/postgresql/data
       - ./src/db/migrations:/docker-entrypoint-initdb.d
 
+
   api:
     build: .
     container_name: filmes-api
+
     ports:
       - "3334:3333"   # acessa pela porta 3334
     depends_on:
       - db
     environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/filmes
       DB_HOST: db
       DB_PORT: 5432
       DB_NAME: filmes
