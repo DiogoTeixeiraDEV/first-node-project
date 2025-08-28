@@ -1,4 +1,4 @@
-### 1️⃣ Criar vídeo
+###  Criar vídeo
 POST http://localhost:3334/movies
 Content-Type: application/json
 
@@ -8,16 +8,11 @@ Content-Type: application/json
     "duration": 180
 }
 
-###
-
-### 2️⃣ Listar vídeos
+###  Listar vídeos
 GET http://localhost:3334/movies
 
-###
-
-### 3️⃣ Atualizar vídeo
-# Substitua SEU_VIDEO_ID pelo id retornado ao criar ou listar vídeos
-PUT http://localhost:3334/movies/2
+###  Atualizar vídeo
+PUT http://localhost:3334/movies/ID_HERE
 Content-Type: application/json
 
 {
@@ -28,6 +23,6 @@ Content-Type: application/json
 
 ###
 
-### 4️⃣ Deletar vídeo
-# Substitua SEU_VIDEO_ID pelo id que deseja deletar
-DELETE http://localhost:3334/movies/3
+### Deletar vídeo
+
+DELETE http://localhost:3334/movies/ID_HERE

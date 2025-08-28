@@ -1,4 +1,4 @@
-### 1️⃣ Criar review
+### Criar review
 POST http://localhost:3334/movies/2/reviews
 Content-Type: application/json
 
@@ -10,11 +10,8 @@ Content-Type: application/json
 
 ###
 
-### 2️⃣ Listar reviews de um filme
-GET http://localhost:3334/movies/2/reviews
+###  Listar reviews de um filme
+GET http://localhost:3334/movies/MOVIE_ID_HERE
 
-###
-
-### 3️⃣ Deletar review
-# Substitua SEU_REVIEW_ID pelo id do review que deseja deletar
-DELETE http://localhost:3334/movies/1/reviews/3
+###  Deletar review
+DELETE http://localhost:3334/movies/MOVIE_ID_HERE/reviews/REVIEW_ID_HERE
