@@ -5,13 +5,13 @@ export async function createMovie(request, reply){
     
     const { title, description, duration} = request.body;
 
-    await movieService.createMovie({
+    const newMovie = await movieService.createMovie({
         title,
         description,
         duration
     })
 
-    return reply.status(201).send();
+    return reply.status(201).send(newMovie);
 }
 
 export async function getMovies(request){

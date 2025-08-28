@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto'
+
 import { sql } from './db.js'
 
 export class DatabasePostgres {
@@ -16,11 +16,13 @@ export class DatabasePostgres {
     }
     
     async create(video) {
-        const videoId = randomUUID()
 
         const {title, description, duration} = video
 
-        await sql `insert into videos (id, title, description, duration) VALUES (${videoId}, ${title}, ${description}, ${duration})`
+        const [newVideo] = await sql `insert into videos (title, description, duration) VALUES ( ${title}, ${description}, ${duration})
+        RETURNING *
+        `
+        return newVideo;
     }
 
     async update(id, video) {
@@ -33,4 +35,33 @@ export class DatabasePostgres {
         await sql `delete from videos where id =  ${id}`
        
     }
+
+    async createReview(review) {
+        const { movie_id, reviewer_name, rating, comment } = review;
+
+        const [newReview] = await sql`
+            INSERT INTO movie_reviews (movie_id, reviewer_name, rating, comment)
+            VALUES (${movie_id}, ${reviewer_name}, ${rating}, ${comment})
+            RETURNING *;
+            `;
+
+    return newReview;
+}
+
+    async getReviewByMovie(movieId) {
+        return await sql`
+            SELECT r.id, r.reviewer_name, r.rating, r.comment, v.title AS movie_title
+            FROM movie_reviews r
+            JOIN videos v ON r.movie_id = v.id
+            WHERE r.movie_id = ${movieId};
+            `;
+    }
+
+    async deleteReview(reviewId, movieId) {
+    await sql`
+        DELETE FROM movie_reviews
+        WHERE id = ${reviewId} AND movie_id = ${movieId};
+    `;
+}
+
 }

@@ -1,0 +1,20 @@
+### 1️⃣ Criar review
+POST http://localhost:3334/movies/1/reviews
+Content-Type: application/json
+
+{
+    "reviewer_name": "João",
+    "rating": 9,
+    "comment": "Filme incrível!"
+}
+
+###
+
+### 2️⃣ Listar reviews de um filme
+GET http://localhost:3334/movies/MOVIE_ID/reviews
+
+###
+
+### 3️⃣ Deletar review
+# Substitua SEU_REVIEW_ID pelo id do review que deseja deletar
+DELETE http://localhost:3334/movies/MOVIE_ID/reviews/REVIEW_ID
