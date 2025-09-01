@@ -1,15 +1,11 @@
-import { DatabasePostgres } from '../db/database-postgres.js';
-
-const database = new DatabasePostgres();
-
-export async function createReview(review) {
-    return await database.createReview(review);
-}
-
-export async function getReviewByMovie(movieId) {
-    return await database.getReviewByMovie(movieId);
-}
-
-export async function deleteReview(reviewId, movieId) {
-    return await database.deleteReview(reviewId, movieId);
-}
+export async function createReview(db, review) {
+    return await db.createReview(review);
+  }
+  
+  export async function getReviewByMovie(db, movieId) {
+    return await db.getReviewByMovie(movieId);
+  }
+  
+  export async function deleteReview(db, reviewId, movieId) {
+    return await db.deleteReview(reviewId, movieId);
+  }

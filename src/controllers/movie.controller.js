@@ -1,45 +1,44 @@
+import * as movieService from "../services/movie.service.js";
 
-import * as movieService from "../services/movie.service.js"
+export async function createMovie(request, reply) {
+  const db = request.server.database;
+  const { title, description, duration } = request.body;
 
-export async function createMovie(request, reply){
-    
-    const { title, description, duration} = request.body;
+  const newMovie = await movieService.createMovie(db, {
+    title,
+    description,
+    duration
+  });
 
-    const newMovie = await movieService.createMovie({
-        title,
-        description,
-        duration
-    })
-
-    return reply.status(201).send(newMovie);
+  return reply.status(201).send(newMovie);
 }
 
-export async function getMovies(request){
+export async function getMovies(request, reply) {
+  const db = request.server.database;
+  const search = request.query.search;
 
-    const search = request.query.search;
-
-    return await movieService.getMovies(search);
-
+  const movies = await movieService.getMovies(db, search);
+  return reply.send(movies);
 }
 
-export async function updateMovie (request, reply) {
+export async function updateMovie(request, reply) {
+  const db = request.server.database;
+  const videoId = request.params.id;
+  const { title, description, duration } = request.body;
 
-    const videoId = request.params.id
-    const { title, description, duration} = request.body
-    await movieService.updateMovie(videoId, {
-        title,
-        description,
-        duration
-    })
+  await movieService.updateMovie(db, videoId, {
+    title,
+    description,
+    duration
+  });
 
-    return reply.status(204).send()
+  return reply.status(204).send();
 }
 
-export async function deleteMovie (request, reply){
+export async function deleteMovie(request, reply) {
+  const db = request.server.database;
+  const videoId = request.params.id;
 
-    const videoId = request.params.id
-
-    await movieService.deleteMovie(videoId)
-
-    return reply.status(204).send()
+  await movieService.deleteMovie(db, videoId);
+  return reply.status(204).send();
 }

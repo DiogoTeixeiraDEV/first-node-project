@@ -36,6 +36,11 @@ export class DatabasePostgres {
        
     }
 
+    async getMovieById(id) {
+        const [movie] = await sql`SELECT * FROM videos WHERE id = ${id}`;
+        return movie || null;
+      }
+
     async createReview(review) {
         const { movie_id, reviewer_name, rating, comment } = review;
 
@@ -63,5 +68,14 @@ export class DatabasePostgres {
         WHERE id = ${reviewId} AND movie_id = ${movieId};
     `;
 }
+
+    async getReviewById(reviewId) {
+        const [review] = await sql`
+        SELECT * FROM movie_reviews
+        WHERE id = ${reviewId};
+        `;
+        return review || null;
+    }
+    
 
 }

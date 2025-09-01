@@ -2,12 +2,16 @@
 import { fastify } from 'fastify'
 import videoRoutes from './routes/movie.routes.js';
 import { movieReviewsRoutes } from './routes/movie.review.routes.js';
+import { DatabasePostgres } from './db/database-postgres.js';
+
 
 const server = fastify();
 
 server.register(videoRoutes, {prefix: "/movies"})
 server.register(movieReviewsRoutes);
 
+const database = new DatabasePostgres();
+server.decorate ("database", database);
 
 server.listen({
      host: '0.0.0.0',

@@ -1,19 +1,15 @@
-import { DatabasePostgres } from '../db/database-postgres.js';
-
-const database = new DatabasePostgres();
-
-export async function createMovie(movie){
-    return database.create(movie)
+export async function createMovie(db, movie) {
+  return await db.create(movie);
 }
 
-export async function getMovies(search){
-    return database.list(search);
+export async function getMovies(db, search) {
+  return await db.list(search);
 }
 
-export async function updateMovie (id, movie){
-    return database.update(id, movie)
+export async function updateMovie(db, id, movie) {
+  return await db.update(id, movie);
 }
 
-export async function deleteMovie(id){
-    return database.delete(id)
+export async function deleteMovie(db, id) {
+  return await db.delete(id);
 }
