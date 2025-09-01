@@ -18,12 +18,11 @@ export async function validateReviewId(request,reply){
     const movieId = parseInt(request.params.movieId);
     const reviewId = parseInt(request.params.reviewId);
   
-    // Checa se IDs são números válidos
+   
     if (isNaN(reviewId) || reviewId <= 0) {
       return reply.status(400).send({ error: "Invalid review ID" });
     }
   
-    // Busca a review no banco
     const review = await db.getReviewById(reviewId);
   
     if (!review) {

@@ -12,7 +12,7 @@ Content-Type: application/json
 GET http://localhost:3334/movies
 
 ###  Atualizar vídeo
-PUT http://localhost:3334/movies/1
+PUT http://localhost:3334/movies/10
 Content-Type: application/json
 
 {
