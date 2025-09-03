@@ -51,7 +51,7 @@ export class DatabasePostgres {
             `;
 
     return newReview;
-}
+    }
 
     async getReviewByMovie(movieId) {
         return await sql`
@@ -67,7 +67,7 @@ export class DatabasePostgres {
         DELETE FROM movie_reviews
         WHERE id = ${reviewId} AND movie_id = ${movieId};
     `;
-}
+    }
 
     async getReviewById(reviewId) {
         const [review] = await sql`
@@ -76,6 +76,24 @@ export class DatabasePostgres {
         `;
         return review || null;
     }
+
+    async createUser(username, hashedPassword) {
+        const [newUser] = await sql`
+            INSERT INTO users (username, password)
+            VALUES (${username}, ${hashedPassword})
+            RETURNING id, username, created_at;
+            `;
+        return newUser;
+    }
+
+  // Buscar usuário por username
+    async getUserByUsername(username) {
+        const [user] = await sql`
+         SELECT * FROM users WHERE username = ${username};
+         `;
+        return user || null;
+    } 
+
     
 
 }
