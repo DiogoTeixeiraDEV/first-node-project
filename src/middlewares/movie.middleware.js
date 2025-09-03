@@ -1,5 +1,5 @@
 export async function validateMovieId(request, reply) {
-  const movieId = parseInt(request.params.movieId); // use movieId
+  const movieId = parseInt(request.params.movieId || request.params.id); 
   if (isNaN(movieId) || movieId <= 0) {
     return reply.status(400).send({ error: "Invalid movie ID" });
   }

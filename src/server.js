@@ -3,9 +3,16 @@ import { fastify } from 'fastify'
 import videoRoutes from './routes/movie.routes.js';
 import { movieReviewsRoutes } from './routes/movie.review.routes.js';
 import { DatabasePostgres } from './db/database-postgres.js';
+import fastifyJwt from '@fastify/jwt';
 
 
 const server = fastify();
+
+
+server.register(fastifyJwt, {
+     secret:  "secret-key",
+});
+
 
 server.register(videoRoutes, {prefix: "/movies"})
 server.register(movieReviewsRoutes);

@@ -1,17 +1,17 @@
 ### Criar review
-POST http://localhost:3334/movies/3/reviews
+POST http://localhost:3334/movies/1/reviews
 Content-Type: application/json
 
 {
-    "reviewer_name": "João",
+    "reviewer_name": "Diogo",
     "rating": 9,
-    "comment": "Filme de merda!"
+    "comment": "Filme ótimo!"
 }
 
 ###
 
 ###  Listar reviews de um filme
-GET http://localhost:3334/movies/3/reviews
+GET http://localhost:3334/movies/1/reviews
 
 ###  Deletar review
-DELETE http://localhost:3334/movies/3/reviews/3
+DELETE http://localhost:3334/movies/1/reviews/2
