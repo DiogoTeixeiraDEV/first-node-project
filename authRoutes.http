@@ -1,0 +1,16 @@
+POST http://localhost:3334/auth/register
+Content-Type: application/json
+
+{
+  "username": "diogo",
+  "password": "123456"
+}
+
+###
+POST http://localhost:3334/auth/login
+Content-Type: application/json
+
+{
+  "username": "diogo",
+  "password": "123456"
+}

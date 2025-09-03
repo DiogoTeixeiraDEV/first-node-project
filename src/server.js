@@ -4,7 +4,7 @@ import videoRoutes from './routes/movie.routes.js';
 import { movieReviewsRoutes } from './routes/movie.review.routes.js';
 import { DatabasePostgres } from './db/database-postgres.js';
 import fastifyJwt from '@fastify/jwt';
-
+import {authRoutes } from './routes/auth.routes.js';
 
 const server = fastify();
 
@@ -16,6 +16,7 @@ server.register(fastifyJwt, {
 
 server.register(videoRoutes, {prefix: "/movies"})
 server.register(movieReviewsRoutes);
+server.register(authRoutes);
 
 const database = new DatabasePostgres();
 server.decorate ("database", database);
