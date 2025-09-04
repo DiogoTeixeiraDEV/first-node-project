@@ -94,6 +94,13 @@ export class DatabasePostgres {
         return user || null;
     } 
 
+    async getUserById(id) {
+        const [user] = await sql`
+          SELECT * FROM users WHERE id = ${id};
+        `;
+        return user || null;
+      }
+
     
 
 }
